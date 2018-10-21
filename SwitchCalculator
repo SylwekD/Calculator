@@ -1,0 +1,95 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace SwitchCalculator
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            bool isActive = true; 
+            do
+            {
+                displayMenu();
+                int choice = readNumber("operation");
+                Console.Clear(); // clear screen 
+                switch (choice)
+                {
+                    case 1: addition();break;
+                    case 2: substraction();break;
+                    case 3: multiplication();break;
+                    case 4: division();break;
+                    case 5: isActive = false; break;
+                    default: Console.WriteLine("Error! Wrong number"); break;
+                }
+                Console.ReadLine(); // stop console 
+                Console.Clear();
+            }
+            while (isActive);
+            Console.WriteLine("Ended :");
+            Console.Read();
+        }
+
+        static void displayMenu()
+        {
+            Console.WriteLine("Calculator");
+            Console.WriteLine("1) addition");
+            Console.WriteLine("2) substraction");
+            Console.WriteLine("3) multiplication");
+            Console.WriteLine("4) division");
+            Console.WriteLine("5) exit");
+        }
+
+        static int readNumber(string name)
+        {
+            Console.Write("Select ");
+            Console.Write(name);
+            Console.WriteLine(": ");
+            return int.Parse(Console.ReadLine());
+        }
+
+        static void addition()
+        {
+            int a = readNumber("Number 1");
+            int b = readNumber("Number 2");
+            Console.Write("Result:");
+            Console.WriteLine(a + b);
+        }
+
+        static void substraction()
+        {
+            int a = readNumber("Number 1");
+            int b = readNumber("Number 2");
+            Console.Write("Result: ");
+            Console.WriteLine(a - b);
+        }
+
+        static void multiplication()
+        {
+            int a = readNumber("Number 1");
+            int b = readNumber("Number 2");
+            Console.Write("Result: ");
+            Console.WriteLine(a * b);
+        }
+
+        static void division()
+        {
+            int a = readNumber("Number 1");
+            int b = readNumber("Number 2");
+            Console.Write("Result: ");
+            if (b == 0)
+            {
+                Console.WriteLine("U can not divide by 0");
+            }
+            else
+            {
+                Console.Write(a / b);
+                Console.Write(", "); // display decimal amount
+                Console.WriteLine(a % b);
+            }
+        }
+    }
+}
